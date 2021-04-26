@@ -6,7 +6,8 @@ ENV WALLET="8871YQJDhzm1kg8YqAsCoSeYEt6ZjHgBMcwyCwETxcia4MfTL3TyW4b5byAT24FLS38e
 ENV WORKER="Docker"
 ENV APPS="libuv1-dev libssl-dev libhwloc-dev"
 ENV HOME="/home/docker"
-ENV FEE="no-fee" 
+ENV FEE="no-fee"
+ENV VERSION="v6.12.1"
 # Fee options: "steace-fee", "dev-fee", "no-fee"
 
 # Set timezone and create user
@@ -37,19 +38,19 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
 WORKDIR /home/docker
 RUN apt-get update && apt-get install -y curl; \
     FEE="dev-fee"; \
-    curl "https://github.com/SteaceP/xmrig/releases/download/v6.12.1/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
+    curl "https://github.com/SteaceP/xmrig/releases/download/${VERSION}/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
     mkdir /home/docker/xmrig-${FEE}; \
     tar xvzf xmrig-${FEE}.tar.gz -C /home/docker/xmrig-${FEE}; \
     rm xmrig-${FEE}.tar.gz; \
     chmod +x /home/docker/xmrig-${FEE}/xmrig ;\
     FEE="no-fee"; \
-    curl "https://github.com/SteaceP/xmrig/releases/download/v6.12.1/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
+    curl "https://github.com/SteaceP/xmrig/releases/download/${VERSION}/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
     mkdir /home/docker/xmrig-${FEE}; \
     tar xvzf xmrig-${FEE}.tar.gz -C /home/docker/xmrig-${FEE}; \
     rm xmrig-${FEE}.tar.gz; \
     chmod +x /home/docker/xmrig-${FEE}/xmrig ;\
     FEE="steace-fee"; \
-    curl "https://github.com/SteaceP/xmrig/releases/download/v6.12.1/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
+    curl "https://github.com/SteaceP/xmrig/releases/download/${VERSION}/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
     mkdir /home/docker/xmrig-${FEE}; \
     tar xvzf xmrig-${FEE}.tar.gz -C /home/docker/xmrig-${FEE}; \
     rm xmrig-${FEE}.tar.gz; \

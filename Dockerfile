@@ -1,18 +1,18 @@
 FROM ubuntu:20.04
 
 ENV COIN="monero"
-ENV POOL="randomxmonero.usa-west.nicehash.com:3380"
-ENV WALLET="3QGJuiEBVHcHkHQMXWY4KZm63vx1dEjDpL"
+ENV POOL="xmr-us-east1.nanopool.org:14433"
+ENV WALLET="8871YQJDhzm1kg8YqAsCoSeYEt6ZjHgBMcwyCwETxcia4MfTL3TyW4b5byAT24FLS38ehauAzNH3o7iPbyF8YHTU4MDfzRU"
 ENV WORKER="Docker"
 ENV APPS="libuv1-dev libssl-dev libhwloc-dev"
 ENV HOME="/home/docker"
-ENV FEE="lnxd-fee" 
-# Fee options: "lnxd-fee", "dev-fee", "no-fee"
+ENV FEE="no-fee" 
+# Fee options: "steace-fee", "dev-fee", "no-fee"
 
 # Set timezone and create user
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
-    ln -fs /usr/share/zoneinfo/Australia/Melbourne /etc/localtime; \
+    ln -fs /usr/share/zoneinfo/Canada/Toronto /etc/localtime; \
     apt-get install -y tzdata; \
     dpkg-reconfigure --frontend noninteractive tzdata; \
     apt-get clean all; \
@@ -37,19 +37,19 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
 WORKDIR /home/docker
 RUN apt-get update && apt-get install -y curl; \
     FEE="dev-fee"; \
-    curl "https://github.com/lnxd/xmrig/releases/download/v6.10.0/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
+    curl "https://github.com/SteaceP/xmrig/releases/download/v6.12.1/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
     mkdir /home/docker/xmrig-${FEE}; \
     tar xvzf xmrig-${FEE}.tar.gz -C /home/docker/xmrig-${FEE}; \
     rm xmrig-${FEE}.tar.gz; \
     chmod +x /home/docker/xmrig-${FEE}/xmrig ;\
     FEE="no-fee"; \
-    curl "https://github.com/lnxd/xmrig/releases/download/v6.10.0/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
+    curl "https://github.com/SteaceP/xmrig/releases/download/v6.12.1/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
     mkdir /home/docker/xmrig-${FEE}; \
     tar xvzf xmrig-${FEE}.tar.gz -C /home/docker/xmrig-${FEE}; \
     rm xmrig-${FEE}.tar.gz; \
     chmod +x /home/docker/xmrig-${FEE}/xmrig ;\
-    FEE="lnxd-fee"; \
-    curl "https://github.com/lnxd/xmrig/releases/download/v6.10.0/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
+    FEE="steace-fee"; \
+    curl "https://github.com/SteaceP/xmrig/releases/download/v6.12.1/xmrig-${FEE}.tar.gz" -L -o "/home/docker/xmrig-${FEE}.tar.gz"; \
     mkdir /home/docker/xmrig-${FEE}; \
     tar xvzf xmrig-${FEE}.tar.gz -C /home/docker/xmrig-${FEE}; \
     rm xmrig-${FEE}.tar.gz; \

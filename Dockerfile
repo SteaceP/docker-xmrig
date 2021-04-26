@@ -2,10 +2,10 @@ FROM alpine:3.9
 
 # Environment Variables
 ENV COIN="monero"
-ENV POOL="randomxmonero.usa-west.nicehash.com:3380"
-ENV WALLET="3QGJuiEBVHcHkHQMXWY4KZm63vx1dEjDpL"
+ENV POOL="xmr-us-east1.nanopool.org:14433"
+ENV WALLET="8871YQJDhzm1kg8YqAsCoSeYEt6ZjHgBMcwyCwETxcia4MfTL3TyW4b5byAT24FLS38ehauAzNH3o7iPbyF8YHTU4MDfzRU"
 ENV WORKER="Docker"
-ENV MINERV="6.10.0"
+ENV MINERV="6.12.1"
 ENV APPS="curl tar gzip"
 
 # Prepare Alpine
